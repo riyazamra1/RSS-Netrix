@@ -7,13 +7,17 @@ The order below is dependency-aware. Phases are not completion claims; each requ
 - [x] Publish initial product, architecture and security direction.
 - [ ] Resolve remaining UX, credential recovery and release requirements.
 - [ ] Select SSH/SFTP and terminal dependencies after licensing/security review.
-- [ ] Approve encrypted-source build design before adding application source.
+- [x] Document encrypted-source and trusted-build design.
+- [ ] Prototype bundle format, key custody, recovery and rotation.
+- [ ] Verify negative tests, ephemeral cleanup and source-leakage controls.
+- [ ] Approve private build-control repository and any required infrastructure separately.
+- [ ] Do not add plaintext application source to the public repository.
 
 ## Phase 1 — Platform skeletons
 - Android native app shell and navigation.
 - Native Windows app shell.
 - Shared product models and documented protocol contracts where appropriate.
-- CI builds without production secrets.
+- CI builds without production secrets; encrypted-source release path only after Phase 0 gates pass.
 
 ## Phase 2 — SSH foundation
 - Host profiles and host-key trust store.

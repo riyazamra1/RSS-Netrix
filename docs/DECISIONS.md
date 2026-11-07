@@ -31,3 +31,11 @@ Target $0/month during development. Do not provision paid services without appro
 ## ADR-008: Delivery discipline
 **Status:** Accepted  
 Requirements first; show change list before commits; consolidate changes; run only one deployment at a time; verify actual builds and functionality before reporting success.
+
+## ADR-009: Encrypted source bundle and key separation
+**Status:** Proposed; prototype and security review required  
+Public source payloads will be encrypted before commit. Source encryption keys, cloud-sync keys and code-signing keys are separate. The bundle format and algorithm suite remain open pending a tested, versioned authenticated-encryption prototype. No key or encrypted bundle is created by this ADR.
+
+## ADR-010: Trusted build control plane
+**Status:** Proposed; separate approval required  
+A private build-control repository with protected secrets and an ephemeral build runner is the preferred design candidate. It is not an HSM/KMS and cannot by itself prevent malicious build code from exfiltrating plaintext source. No private repository, secret, runner or cloud resource is provisioned by this ADR.
