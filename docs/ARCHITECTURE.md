@@ -54,9 +54,19 @@ The terminal view is a renderer/input surface, not a shell implementation. The S
 ## 7. Public/private build boundaries
 The public repository contains product documentation, non-sensitive build metadata and (once implemented) authenticated encrypted source bundles only. It must not contain plaintext application source, decryption keys, signing keys or credentials.
 
-A separate private build-control repository is the proposed location for reviewed privileged workflows and protected secrets; it has not been created and requires explicit approval. Cloudflare R2 is a possible ciphertext store only and has not been provisioned. The trusted build runner is a separate, short-lived trust zone in which source is decrypted only for an authorized build. No decrypted workspace, cache or source artifact may persist beyond the job.
+The public repository remains the single RSS Netrix repository. It may contain documentation, non-sensitive build metadata and encrypted source bundles after encryption and acceptance gates pass. It must not contain plaintext app source, decryption keys, signing keys, credentials or customer release binaries.
+
+Public CI must be secret-free. Any future decryption workflow must be a protected release path in this same repository, tied to an immutable reviewed commit, protected-environment approval and an ephemeral runner. Fork PRs and untrusted workflows must never receive secrets. Public workflow code and repository administrators remain part of the trust boundary. No separate private build-control repository is required. Cloudflare R2 is a possible ciphertext store only and has not been provisioned. The trusted build runner is a separate, short-lived trust zone in which source is decrypted only for an authorized build. No decrypted workspace, cache or source artifact may persist beyond the job.
 
 The build-control workflow, its administrators, build scripts and dependencies are part of the trusted computing base. A runner cannot guarantee source confidentiality against malicious code executing while source is decrypted. See `docs/SOURCE_PROTECTION.md` and `docs/BUILD_PIPELINE.md`.
 
-## 8. Deployment
+## 8. Customer distribution and entitlement
+- Free features are available under the defined Free product policy.
+- Android installation is through the official RSS website or Google Play Store.
+- Windows installation is through the official RSS website or Microsoft Store.
+- GitHub is not a customer binary download channel. Do not publish public APK/EXE/MSIX release assets.
+- Premium features require a valid licence, with server-side validation and device activation/revocation controls.
+- Do not claim a store channel is live until its listing, review and download flow are verified.
+
+## 9. Deployment
 Cloud sync is a later, optional service. Cloudflare Worker + R2 is the current $0-target candidate, not provisioned infrastructure. Before deployment, define authentication, object authorization, quota enforcement, deletion semantics, abuse controls, observability and cost limits.
