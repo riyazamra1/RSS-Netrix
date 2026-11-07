@@ -2,7 +2,7 @@
 
 ## 1. Status
 
-Design only. No workflow, private build-control repository, secret, key, R2 bucket, Worker, Android build or Windows build has been provisioned by this document. The workflow must not be enabled until the source-protection design and its acceptance tests are approved.
+Design only. No workflow, secret, key, R2 bucket, Worker, Android build or Windows build has been provisioned by this document. The workflow must not be enabled until the source-protection design and its acceptance tests are approved.
 
 ## 2. Intended flow
 
@@ -23,7 +23,9 @@ Design only. No workflow, private build-control repository, secret, key, R2 buck
 - Do not use `pull_request_target` to check out and execute untrusted PR code with privileged credentials.
 - A protected release workflow must bind authorization to a reviewed immutable commit SHA and protected environment approval.
 - Changes to workflow files, build scripts, dependency locks, encryption/decryption code and release configuration require elevated review.
-- The private build-control repository is a proposed separate control plane, not yet created. It must be private, access-limited and protected against unreviewed workflow changes.
+- Public workflow source is visible. Repository administrators and maintainers who can change privileged workflows remain trusted actors; GitHub secrets do not prevent malicious privileged code from exfiltrating them.
+- Do not use `pull_request_target` to check out and execute untrusted PR code with privileged credentials.
+- Any future privileged release workflow must run only through an explicitly authorized protected path, require protected-environment approval, verify an immutable reviewed commit SHA and use least-privilege permissions.
 
 ## 4. Runner isolation
 
@@ -42,10 +44,11 @@ Disable source workspace caching. Do not publish build scans, diagnostic archive
 
 ## 6. Build outputs
 
-Allowed retained outputs:
-- signed or unsigned test APK/EXE packages as appropriate to the approved stage;
-- release installer/package;
+Allowed retained internal outputs:
+- signed packages for controlled validation;
 - checksums, provenance metadata and non-sensitive build/test summaries.
+
+Customer-facing binaries must be distributed through the official RSS website, Google Play Store or Microsoft Store, subject to channel readiness and platform policies. Do not publish public GitHub release assets. RSS Netrix has a Free feature tier; Premium features require valid licence validation.
 
 Disallowed outputs:
 - plaintext source archives or source maps containing private source;
