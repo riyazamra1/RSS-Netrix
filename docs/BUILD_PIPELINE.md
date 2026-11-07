@@ -35,7 +35,7 @@ Disable source workspace caching. Do not publish build scans, diagnostic archive
 
 ## 5. Secrets and signing
 
-- Store decryption authorization only in the approved protected secret store; do not add it until the private build-control repository is approved.
+- Store decryption authorization only in a protected secret store with explicit release approval; do not add it until the single-repository workflow and threat model pass review.
 - Keep Android signing material and Windows signing material separate from source-encryption keys.
 - Do not place long-lived signing keys in the public repository, R2 or client applications.
 - Prefer short-lived credentials and narrow scopes. Masking is not a substitute for avoiding secret output.
