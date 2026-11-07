@@ -11,12 +11,11 @@ This is source-at-rest protection. It does not prevent reverse engineering of re
 | Location | Permitted contents | Prohibited contents |
 |---|---|---|
 | Public `riyazamra1/RSS-Netrix` | Documentation, build metadata, encrypted source bundles, public test vectors | Plaintext app source, decryption keys, signing keys, credentials |
-| Private build-control repository (to be separately approved) | Reviewed workflow definitions, locked build tooling, protected Actions secrets | Production user data, long-lived plaintext source archives |
 | Cloudflare R2 (not provisioned) | Encrypted source bundle objects only, if later approved | Keys, plaintext source, build logs |
 | Trusted ephemeral runner | Decrypted source only during an authorized build | Persistent caches, uploaded source artifacts, retained workspaces |
 | Release storage | Verified APK/EXE/installers and checksums | Source archives, private keys, build decryption keys |
 
-The private build-control repository and any Cloudflare resources are proposed only. Creating them requires separate explicit approval. No repository, bucket, Worker, secret or key is created by this document.
+No separate private build-control repository is part of this design. No R2 bucket, Worker, key, secret or paid resource is provisioned by this document.
 
 ## 3. Key hierarchy
 
@@ -30,9 +29,9 @@ Never derive one of these keys from another or reuse a key across purposes. Use 
 
 ## 4. Key custody
 
-The proposed build design stores the minimum required decryption capability in protected secrets belonging to a private build-control repository. R2, if used, stores ciphertext only. Keep a separate offline recovery copy under owner-controlled access.
+Ordinary public CI must be secret-free. Any future decryption-capable workflow must be a protected release path in this same repository: protected branch, mandatory review, immutable approved commit SHA, protected-environment approval, least privilege and a fresh ephemeral runner. Fork PRs and untrusted workflows must never receive secrets. Never use `pull_request_target` to execute untrusted code with privileged credentials.
 
-This is not an HSM or dedicated KMS. Repository administrators and authorized workflow maintainers may be able to invoke workflows that use the secret. GitHub Actions secrets do not by themselves prevent malicious workflow code from exfiltrating decrypted material.
+Public workflow code and repository administrators who can change privileged workflows remain part of the trust boundary. GitHub Actions secrets are not an HSM/KMS and cannot prevent malicious privileged workflow code from exfiltrating secrets or plaintext. Keep a separately controlled offline recovery copy.
 
 Do not put the decryption key in:
 - the public repository, source bundle, APK or EXE;
@@ -60,7 +59,7 @@ Authenticate metadata as associated data. Reject unknown versions, invalid lengt
 A trusted runner is not automatically safe. Build scripts and dependencies execute code and can read the decrypted workspace. Controls must include:
 1. A protected release branch and mandatory review for source-encryption, workflow, build-script and dependency changes.
 2. No secrets in fork pull-request or other untrusted workflow contexts; do not use unsafe `pull_request_target` patterns to check out and execute untrusted code.
-3. A private build-control repository with tightly limited write/admin access and protected environments, if approved.
+3. Protected-environment approval and mandatory review of privileged workflow changes in the same public repository; repository administrators remain trusted actors.
 4. Immutable SHA pinning for third-party workflow actions; dependency lockfiles and integrity verification.
 5. Least-privilege workflow permissions and short-lived job credentials.
 6. Decrypt only after authorization, immediately before build, into a fresh ephemeral workspace.
@@ -83,7 +82,18 @@ Before production use, specify and test:
 
 Deleting a key can render historical ciphertext unrecoverable. Do not rotate or revoke without a tested recovery/migration plan. Removing a leaked plaintext file in a later commit does not remove it from Git history; treat exposure as a security incident.
 
-## 8. Acceptance tests before source is added
+## 8. Commercial access and distribution policy
+
+RSS Netrix includes a Free feature tier and paid Premium features. Free features do not mean public GitHub binary downloads.
+
+- Android customers install through the official RSS website or Google Play Store.
+- Windows customers install through the official RSS website or Microsoft Store.
+- GitHub is not a customer download channel. Do not publish APKs, EXEs, MSIX packages or installers as public GitHub release assets.
+- Premium features require valid licence validation and device activation. Expiry and revocation must be enforced by the licensing service.
+- Store availability and platform policies must be verified before claiming a store release is available.
+- Signed binaries can still be inspected and reverse engineered; source encryption does not prevent binary analysis.
+
+## 9. Acceptance tests before source is added
 
 - Round-trip encryption/decryption on supported build environments.
 - Wrong-key, modified-ciphertext, modified-metadata and truncated-file rejection.
