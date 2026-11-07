@@ -8,9 +8,11 @@ The order below is dependency-aware. Phases are not completion claims; each requ
 - [ ] Resolve remaining UX, credential recovery and release requirements.
 - [ ] Select SSH/SFTP and terminal dependencies after licensing/security review.
 - [x] Document encrypted-source and trusted-build design.
-- [ ] Prototype bundle format, key custody, recovery and rotation.
+- [x] Add experimental AES-256-GCM source-bundle utility and secret-free negative/round-trip tests (test execution pending).
+- [ ] Complete independent cryptographic review, streaming implementation, key custody, recovery and rotation before production use.
 - [ ] Verify negative tests, ephemeral cleanup and source-leakage controls.
 - [ ] Verify protected-workflow negative tests, ephemeral cleanup and source-leakage controls.
+- [ ] Do not enable source decryption in CI until protected-environment controls and repository branch protections are verified.
 - [ ] Define Free/Premium feature matrix and licensing lifecycle.
 - [ ] Define official RSS website and store distribution procedures.
 - [ ] Do not add plaintext application source to the public repository.
