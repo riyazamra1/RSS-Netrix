@@ -50,8 +50,11 @@ class SourceBundleTests(unittest.TestCase):
     def test_header_tampering_is_rejected(self):
         with patch.dict(os.environ, {"RSS_SOURCE_KEK": self.key_a}):
             encrypt_file(self.source, self.bundle, "prototype-key-v1")
+        from tools.source_bundle import MAGIC
         data = bytearray(self.bundle.read_bytes())
-        data[-20] ^= 0x01
+        header_start = len(MAGIC) + 4
+        key_id_offset = data.index(b"prototype-key-v1", header_start)
+        data[key_id_offset] = ord("q")
         self.bundle.write_bytes(data)
         with patch.dict(os.environ, {"RSS_SOURCE_KEK": self.key_a}):
             with self.assertRaises(BundleError):
