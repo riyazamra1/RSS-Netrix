@@ -1,0 +1,38 @@
+# IDE and OS
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Android / Gradle
+.gradle/
+**/build/
+local.properties
+*.iml
+
+# .NET / Visual Studio
+.vs/
+[Bb]in/
+[Oo]bj/
+*.user
+*.suo
+
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+*.keystore
+*.jks
+*.p12
+*.pfx
+secrets/
+.local/
+
+# Build outputs and logs
+artifacts/
+dist/
+*.log
+
+# Decrypted source workspaces (never commit)
+.decrypted/
+plaintext-workspace/
