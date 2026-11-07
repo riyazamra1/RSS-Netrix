@@ -31,3 +31,15 @@ Target $0/month during development. Do not provision paid services without appro
 ## ADR-008: Delivery discipline
 **Status:** Accepted  
 Requirements first; show change list before commits; consolidate changes; run only one deployment at a time; verify actual builds and functionality before reporting success.
+
+## ADR-009: Encrypted source bundle and key separation
+**Status:** Proposed; prototype and security review required  
+Public source payloads will be encrypted before commit. Source encryption keys, cloud-sync keys and code-signing keys are separate. The bundle format and algorithm suite remain open pending a tested, versioned authenticated-encryption prototype. No key or encrypted bundle is created by this ADR.
+
+## ADR-010: Single-public-repository trusted build
+**Status:** Proposed; implementation and security review required  
+Keep one public repository and do not rely on a separate private build-control repository. Ordinary public CI is secret-free. Any future decryption/release workflow must use protected approvals, immutable reviewed commit binding, least privilege and ephemeral runners. Public workflow code and maintainers remain trusted; GitHub secrets do not prevent malicious privileged workflow code from exfiltrating plaintext. No workflow, secret, key, runner or cloud resource is provisioned by this ADR.
+
+## ADR-011: Free/Premium product and official distribution
+**Status:** Accepted  
+RSS Netrix includes a defined Free feature tier and paid Premium features. GitHub is not a customer download channel and must not host public APK, EXE, MSIX or installer release assets. Android customers obtain the app through the official RSS website or Google Play Store; Windows customers through the official RSS website or Microsoft Store, subject to channel readiness and store policies. Premium entitlements require valid licence validation and device controls. Free features do not imply unrestricted GitHub downloads.
