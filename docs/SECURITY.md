@@ -45,8 +45,9 @@
 ### Encrypted source and build pipeline
 - Public repository application source payloads must be encrypted before commit; do not commit plaintext source.
 - Keep source-encryption keys separate from sync keys and code-signing keys.
-- Store ciphertext in the public repository or approved object storage; never store decryption keys alongside it.
-- Decrypt only in a reviewed, protected, ephemeral build path after authorization.
+- Store ciphertext in the public repository; never store decryption keys alongside it.
+- Keep ordinary public CI secret-free. Restrict any future decryption workflow to a protected, reviewed release path and immutable approved commit.
+- Public workflow code and repository administrators remain part of the trust boundary; GitHub secrets are not an HSM/KMS.
 - Never expose decryption/signing secrets to untrusted PRs or forks.
 - Pin third-party actions by immutable commit SHA and grant least-privilege workflow permissions.
 - Do not print secrets or source; do not cache or publish decrypted workspaces.
@@ -66,6 +67,13 @@
 - Client-side encryption does not protect data on an already compromised endpoint.
 - Malicious build code can potentially exfiltrate source while it is decrypted.
 - Free-tier infrastructure is not a security boundary by itself.
+
+### Licensing and distribution
+- Provide the defined Free feature tier without treating GitHub as a public binary download channel.
+- Android customers install through the official RSS website or Google Play Store; Windows customers through the official RSS website or Microsoft Store, subject to channel readiness and platform policies.
+- Enforce Premium entitlement, device activation, expiry and revocation server-side. Do not rely solely on client-side flags or obfuscation.
+- Sign release packages and verify package identity and update authenticity.
+- Released APK/EXE/MSIX packages can still be inspected and reverse engineered.
 
 ## 6. Release gate
 No production credential vault, encrypted sync or source-decryption workflow may be marked complete until threat modelling, implementation review, automated negative tests, recovery testing and independent verification are performed.
