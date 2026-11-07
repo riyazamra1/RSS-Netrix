@@ -79,9 +79,9 @@ def encrypt_file(source: Path, destination: Path, key_id: str, force: bool = Fal
     destination = destination.resolve()
     if source == destination:
         raise BundleError("input and output must be different files")
-    plaintext = source.read_bytes()
-    if len(plaintext) > MAX_INPUT_BYTES:
+    if source.stat().st_size > MAX_INPUT_BYTES:
         raise BundleError(f"input exceeds prototype limit of {MAX_INPUT_BYTES} bytes")
+    plaintext = source.read_bytes()
 
     kek = _load_kek()
     dek = secrets.token_bytes(32)
@@ -112,6 +112,8 @@ def decrypt_file(source: Path, destination: Path, force: bool = False) -> None:
     destination = destination.resolve()
     if source == destination:
         raise BundleError("input and output must be different files")
+    if source.stat().st_size > MAX_INPUT_BYTES + MAX_HEADER_BYTES + len(MAGIC) + 4 + 16:
+        raise BundleError("bundle exceeds prototype size limit")
     bundle = source.read_bytes()
     prefix_length = len(MAGIC) + 4
     if len(bundle) < prefix_length or not bundle.startswith(MAGIC):
