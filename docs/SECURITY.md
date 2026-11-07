@@ -59,7 +59,7 @@
 - Exact source bundle suite and envelope format remain unselected until a tested prototype and review.
 - Define key wrapping, backup, recovery, rotation, revocation and incident response before enabling source builds.
 - GitHub protected secrets are not an HSM/KMS; repository administrators and privileged workflow code remain part of the trust boundary.
-- Do not provision a Worker, R2 bucket, private build-control repository or key without separate explicit approval.
+- Do not provision a Worker, R2 bucket, key or paid service without separate explicit approval.
 
 ## 5. Security limitations
 - A public Android APK or Windows executable can be inspected and reverse engineered.
