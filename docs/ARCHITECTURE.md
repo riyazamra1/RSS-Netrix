@@ -26,12 +26,12 @@ Application ID: `com.riyaz.rssnetrix`.
 - Do not use a WebView as the primary application shell.
 
 ## 3. Logical modules
-1. **Presentation:** host list, terminal workspace, SFTP browser, tunnels, settings.
-2. **Application services:** host management, session orchestration, transfer orchestration, command history.
-3. **Protocol adapters:** SSH transport, interactive shell, SFTP, port forwarding.
-4. **Security:** host-key trust, credential vault, key import/generation, encryption envelope.
-5. **Persistence:** non-secret profile metadata, encrypted local secret records, user preferences and opt-in history.
-6. **Cloud adapter (later):** authenticated API, encrypted object transfer, sync metadata and conflict resolution.
+1. **Presentation:** host manager, terminal/workspace UI, SFTP browser, tunnels, snippets, settings and collaboration surfaces.
+2. **Application services:** host management, session/workspace orchestration, command/snippet services, transfer queue and team authorization.
+3. **Protocol adapters:** SSH transport, interactive shell, SFTP and port forwarding; optional protocol adapters remain gated by compatibility/security review.
+4. **Security:** host-key trust, local credential vault, key import/generation, platform protection, encryption envelopes and entitlement verification.
+5. **Persistence:** host metadata, encrypted local secrets, preferences, local history and user-controlled session records.
+6. **Optional sync/collaboration services:** authenticated encrypted sync, device lifecycle, conflict handling, shared vaults, team permissions, session collaboration and audit events. These services must not become a dependency for basic Free SSH.
 
 ## 4. Data boundaries
 - Host profile metadata can be stored locally with normal application storage protections.
@@ -58,5 +58,12 @@ The repository is public. Product documentation and build metadata may be readab
 - Plaintext source must not be uploaded as workflow artifacts, cached, logged or retained.
 - Public binaries remain subject to reverse engineering; source encryption does not change that fact.
 
-## 8. Deployment
+## 8. Feature entitlements and service boundaries
+- Apply the approved Free/Premium feature classification in [FEATURE_PARITY_SPEC.md](FEATURE_PARITY_SPEC.md).
+- Basic SSH, secure local credential storage, essential terminal operation and all terminal customization must work without a Premium account or cloud connection.
+- Premium-only cloud/team capabilities require server-side authorization and an explicit, reviewable entitlement model; do not rely on a client-side feature flag.
+- Keep additional protocols and advanced authentication integrations unassigned until platform, dependency, security and licensing reviews are complete.
+- Pricing, trial, billing, device limits and paid-service procurement are outside the approved feature classification.
+
+## 9. Deployment
 Cloud sync is a later, optional service. Cloudflare Worker + R2 is the current $0-target candidate, not provisioned infrastructure. Before deployment, define authentication, object authorization, quota enforcement, deletion semantics, abuse controls, observability and cost limits.

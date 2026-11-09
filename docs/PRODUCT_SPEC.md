@@ -69,6 +69,16 @@ Native Windows desktop application, not a browser wrapper. WinUI 3 with a modern
 - Conflict handling, device revocation, key rotation, backup/restore and permanent deletion must be specified before production release.
 - No cloud resources are provisioned in the foundation stage.
 
+## 3.9 Comprehensive feature scope and approved tier split
+The full functional requirements for host management, terminal workflows, themes, file attachment, productivity, SFTP, tunnels, authentication, encrypted sync, team collaboration, platform behaviour, release constraints and acceptance gates are maintained in [FEATURE_PARITY_SPEC.md](FEATURE_PARITY_SPEC.md). That document is the detailed feature checklist and must be used alongside this product specification.
+
+The approved feature placement for planning is:
+- **Free:** direct SSH and local host management; secure local credential vault; interactive terminal, tabs and basic split panes; all terminal themes/custom colours; file attachment/path insertion; basic SFTP; basic SSH tunnels; basic command history/snippets; basic host import/export.
+- **Premium:** advanced workspace presets/session restoration; advanced productivity and multi-host execution; advanced SFTP workflows; encrypted multi-device sync; team workspaces/shared vaults; live terminal collaboration; team audit/administration.
+- **Unassigned:** Telnet, Mosh, serial and other additional protocols; SSH certificates, FIDO2/security keys and advanced authentication integrations pending feasibility review.
+
+This approves feature classification only. Prices, trial, renewals, device limits, payments, licence policy and paid infrastructure remain unapproved and must not be implemented or purchased without a separate decision.
+
 ## 4. UX and accessibility
 - Original RSS design system; responsive Android and Windows layouts.
 - Clear connection, trust, host-key-changed and security-warning states.

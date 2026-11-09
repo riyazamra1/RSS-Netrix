@@ -31,3 +31,8 @@ Target $0/month during development. Do not provision paid services without appro
 ## ADR-008: Delivery discipline
 **Status:** Accepted  
 Requirements first; show change list before commits; consolidate changes; run only one deployment at a time; verify actual builds and functionality before reporting success.
+
+
+## ADR-009: RSS Netrix Free/Premium feature placement
+**Status:** Accepted for planning  
+The owner approved the feature split recorded in [FEATURE_PARITY_SPEC.md](FEATURE_PARITY_SPEC.md). Free includes core local SSH, secure local credential storage, terminal tabs/basic splits, all terminal themes and custom colour controls, terminal file attachment/path insertion, basic SFTP, basic tunnels, basic history/snippets and basic host import/export. Premium is planned for advanced workspaces/productivity, advanced SFTP, encrypted multi-device sync, team vaults, live collaboration and team audit/administration. Additional protocols and advanced authentication integrations remain unassigned pending feasibility review. This ADR does not approve prices, trial terms, renewal, device limits, payment provider, licence enforcement details or paid infrastructure.
