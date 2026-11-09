@@ -52,4 +52,4 @@ The initial development target is **$0/month**, using eligible free tiers where 
 
 This repository is at the initial foundation stage. No production SSH client, cloud synchronization service, credentials, encryption master key, or deployment infrastructure is represented as complete.
 
-See [docs/PRODUCT_SPEC.md](docs/PRODUCT_SPEC.md), [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md), [docs/SECURITY.md](docs/SECURITY.md), [docs/ROADMAP.md](docs/ROADMAP.md), and [docs/DECISIONS.md](docs/DECISIONS.md) for the working specification.
+See [docs/FEATURE_PARITY_SPEC.md](docs/FEATURE_PARITY_SPEC.md) for the comprehensive feature scope and approved Free/Premium feature split. The supporting [product specification](docs/PRODUCT_SPEC.md), [architecture](docs/ARCHITECTURE.md), [security design](docs/SECURITY.md), [roadmap](docs/ROADMAP.md), and [architecture decisions](docs/DECISIONS.md) define the implementation constraints and delivery gates.

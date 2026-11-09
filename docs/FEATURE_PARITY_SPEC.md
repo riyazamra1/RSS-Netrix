@@ -192,20 +192,42 @@ These capabilities are explicitly required in the Free tier and must not be payw
 - Secure Windows credential storage and optional Windows Hello integration.
 - Windows installer/package signed for official RSS distribution.
 
-## 12. Free/Premium classification — approval required
+## 12. Free/Premium feature classification — approved scope
 
-The only tier assignment confirmed at this point is:
+The owner approved the following proposed feature split for RSS Netrix planning. This approves **feature placement only**; it does not approve prices, trial duration, subscription terms, device limits, payment providers, licence enforcement details or paid infrastructure.
 
-| Capability | Current classification |
-|---|---|
-| 30+ built-in terminal themes | **Free — confirmed** |
-| Custom colour picker and custom themes | **Free — confirmed** |
-| Other terminal colour controls and ANSI/true-colour support | **Free — confirmed as part of terminal customization** |
-| All other features in this specification | **Not yet assigned — owner approval required** |
+| Capability | Tier | Scope |
+|---|---|---|
+| Direct SSH connections and local host profiles | **Free** | Core SSH access, saved hosts, groups, tags and local connection settings |
+| SSH password and key authentication | **Free** | Secure local credential handling and host-key verification |
+| Local encrypted credential vault | **Free** | Device-protected local storage; no mandatory cloud account |
+| Interactive SSH terminal | **Free** | PTY, ANSI/VT, Unicode, scrollback, copy/paste and terminal keyboard |
+| Terminal tabs and split panes | **Free** | Multiple live SSH sessions and basic split workspace |
+| All terminal themes and customization | **Free** | 30+ themes, custom theme editor, colour wheel, HEX/RGB/HSL, ANSI palette and true colour |
+| File attachment/path insertion | **Free** | Native picker, editable path insertion, no automatic execution |
+| Basic SFTP | **Free** | Browse, upload, download, create folder, rename and delete with safeguards |
+| Basic SSH port forwarding | **Free** | Local, remote and dynamic SOCKS tunnels |
+| Basic command history and snippets | **Free** | Recent command list and user-created snippets with deliberate execution |
+| Basic host import/export | **Free** | Host configuration export/import with secrets excluded by default |
+| Advanced workspace presets and session restoration | **Premium proposal approved** | Saved multi-host layouts and advanced workspace management |
+| Advanced productivity | **Premium proposal approved** | Multi-host snippet execution, advanced autocomplete and enhanced command/script management |
+| Advanced SFTP workflows | **Premium proposal approved** | Advanced transfer queue features, host-to-host transfer and enhanced file workflows |
+| Encrypted multi-device sync | **Premium proposal approved** | Optional end-to-end encrypted sync, device management and recovery |
+| Team workspaces and shared vaults | **Premium proposal approved** | Team membership, shared encrypted data and granular permissions |
+| Live terminal collaboration and session handoff | **Premium proposal approved** | Multi-user session collaboration and control handoff |
+| Team audit and administration | **Premium proposal approved** | Audit trails, shared session records and administrative controls |
+| Telnet, Mosh, serial and other additional protocols | **Unassigned** | Keep subject to technical, security, platform and licensing feasibility review |
+| SSH certificates, FIDO2/security keys and advanced auth integrations | **Unassigned** | Do not restrict or promise until compatibility and security review |
 
-Do not infer that a capability is Premium because it is complex, cloud-backed or listed in a competitor's paid plan. Do not implement paywalls, plan limits, subscription pricing, device limits, trial duration, licence enforcement or payment-provider integration until the owner approves a complete feature matrix and commercial rules.
+### Commercial and implementation boundaries
 
-Recommended decision principle for review: preserve useful, secure local SSH access as the product's foundation; consider charging for optional sync, team sharing, collaboration and advanced managed services. This is a recommendation only, not an approved tier decision.
+- Keep the Free tier independently useful for personal/local SSH administration. Do not make basic SSH access, secure local credential storage or essential security controls dependent on a subscription.
+- Every terminal theme, custom colour picker, colour format and terminal colour capability remains Free.
+- Premium capabilities must be genuinely implemented and tested before they are advertised or charged for. A UI-only lock screen is not an implementation.
+- Any Premium entitlement must be enforced through a reviewed licensing/authorization design; do not trust a client-side flag alone.
+- Exact prices, currency presentation, trial, renewal, device activation limits, grace periods, refunds, payment provider and licence recovery remain separate owner decisions.
+- Do not provision paid services or infrastructure without explicit approval.
+- Additional protocols and advanced authentication remain unassigned; do not silently classify them as Premium.
 
 ## 13. Release and distribution constraints
 
