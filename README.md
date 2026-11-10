@@ -53,3 +53,9 @@ The initial development target is **$0/month**, using eligible free tiers where 
 This repository is at the initial foundation stage. No production SSH client, cloud synchronization service, credentials, encryption master key, or deployment infrastructure is represented as complete.
 
 See [docs/PRODUCT_SPEC.md](docs/PRODUCT_SPEC.md), [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md), [docs/SECURITY.md](docs/SECURITY.md), [docs/ROADMAP.md](docs/ROADMAP.md), and [docs/DECISIONS.md](docs/DECISIONS.md) for the working specification.
+
+## Licence and source handling
+
+RSS Netrix is proprietary commercial software owned by Razeen Secure Solution and is licensed all rights reserved; see [LICENSE](LICENSE). Public availability of this repository grants no licence. Third-party dependency licences are preserved in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+
+Proprietary application source is never committed in plaintext to any public branch, artifact, log or release. See [docs/SOURCE_HANDLING_POLICY.md](docs/SOURCE_HANDLING_POLICY.md). The encrypted-source workstream runs in parallel and is not a blocker for ordinary development.
