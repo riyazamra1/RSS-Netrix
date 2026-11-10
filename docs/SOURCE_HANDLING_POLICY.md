@@ -68,8 +68,8 @@ ordinary development continues unimpeded.
 
 ## 7. Relationship to other documents
 
-- `ENCRYPTED_SOURCE_REVIEW.md` — the go/no-go gates for encrypted source.
-- `SOURCE_PROTECTION.md` and `BUILD_PIPELINE.md` — the detailed design.
-- `SECURITY.md` — the security design and threat model.
-- `LICENSE` — the proprietary all-rights-reserved licence for RSS Netrix code.
-- `THIRD_PARTY_NOTICES.md` — preserved third-party licences.
+- `ENCRYPTED_SOURCE_REVIEW.md` — the go/no-go gates for encrypted source. **Planned design document** (drafted on an unmerged branch; not yet on `main`).
+- `SOURCE_PROTECTION.md` and `BUILD_PIPELINE.md` — the detailed design. **Planned design documents** (drafted on an unmerged branch; not yet on `main`).
+- `SECURITY.md` — the security design and threat model (present).
+- `LICENSE` — the proprietary all-rights-reserved licence for RSS Netrix code (present).
+- `THIRD_PARTY_NOTICES.md` — preserved third-party licences (present).
