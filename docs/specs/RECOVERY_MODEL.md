@@ -45,7 +45,7 @@
 
 ## 5. Interaction with encrypted sync (later phase)
 
-- Sync keys and vault keys are **separate cryptographic domains** (`SOURCE_PROTECTION.md` §3).
+- Sync keys and vault keys are **separate cryptographic domains** (`SOURCE_PROTECTION.md` §3, planned).
 - Sync recovery uses the same user-controlled phrase/passphrase approach.
 - Secrets/private keys are excluded from sync by default until this recovery model is available and approved.
 

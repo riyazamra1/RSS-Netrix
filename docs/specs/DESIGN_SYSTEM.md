@@ -33,7 +33,7 @@
 | Elevation | flat, raised, modal |
 | Motion | standard, emphasised, reduced-motion fallback |
 
-Themes: at least 30 built-in themes including dark, light, black/OLED and high-contrast families. All theme and colour capabilities are **Free** (see `FEATURE_PARITY_SPEC.md`).
+Themes: at least 30 built-in themes including dark, light, black/OLED and high-contrast families. All theme and colour capabilities are **Free** (see `FEATURE_PARITY_SPEC.md`, planned).
 
 ## 4. Core screens
 

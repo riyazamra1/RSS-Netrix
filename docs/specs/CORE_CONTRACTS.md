@@ -151,4 +151,4 @@ States: `Queued → Active → Paused? → Completed` | `Cancelled` | `Failed`.
 
 ## 11. Compatibility with Free/Premium allocation
 
-This contract set covers Free-tier behaviour. Premium capabilities (advanced workspaces, multi-host execution, encrypted sync, team features) build on these contracts and must not weaken any invariant above. See `FEATURE_PARITY_SPEC.md`.
+This contract set covers Free-tier behaviour. Premium capabilities (advanced workspaces, multi-host execution, encrypted sync, team features) build on these contracts and must not weaken any invariant above. See `FEATURE_PARITY_SPEC.md` (planned; drafted on an unmerged branch).

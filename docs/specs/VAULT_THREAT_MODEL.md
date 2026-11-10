@@ -40,7 +40,7 @@ Define what the local vault protects, what it does not, and the controls require
 | V-06 | Screenshot/overlay capture | Mark secret screens as non-capturable where the platform allows |
 | V-07 | Backup exfiltration | Exclude vault material from OS backups by default, or ensure it remains encrypted |
 | V-08 | Weak KDF for user passphrase | Use a reviewed, memory-hard KDF (e.g. Argon2id) if a user passphrase is used |
-| V-09 | Key confusion across purposes | Separate vault key from sync key and signing keys (see `SOURCE_PROTECTION.md`) |
+| V-09 | Key confusion across purposes | Separate vault key from sync key and signing keys (see `SOURCE_PROTECTION.md`, planned) |
 | V-10 | Silent remote-revocation claim | UI states clearly that local deletion is not remote revocation |
 | V-11 | Unauthorised export | Re-authentication before reveal/export of private material |
 | V-12 | Downgrade to weak algorithms | Modern algorithm defaults; legacy disabled with warning |
