@@ -7,13 +7,20 @@ The order below is dependency-aware. Phases are not completion claims; each requ
 - [x] Publish initial product, architecture and security direction.
 - [ ] Resolve remaining UX, credential recovery and release requirements.
 - [ ] Select SSH/SFTP and terminal dependencies after licensing/security review.
-- [ ] Approve encrypted-source build design before adding application source.
+- [x] Document encrypted-source and trusted-build design.
+- [ ] Prototype bundle format, key custody, recovery and rotation.
+- [ ] Verify negative tests, ephemeral cleanup and source-leakage controls.
+- [ ] Verify protected-workflow negative tests, ephemeral cleanup and source-leakage controls.
+- [ ] Define Free/Premium feature matrix and licensing lifecycle.
+- [ ] Define official RSS website and store distribution procedures.
+- [ ] Do not add plaintext application source to the public repository.
+- [ ] Do not publish customer binaries as public GitHub release assets.
 
 ## Phase 1 — Platform skeletons
 - Android native app shell and navigation.
 - Native Windows app shell.
 - Shared product models and documented protocol contracts where appropriate.
-- CI builds without production secrets.
+- CI builds without production secrets; encrypted-source release path only after Phase 0 gates pass.
 
 ## Phase 2 — SSH foundation
 - Host profiles and host-key trust store.
@@ -42,11 +49,15 @@ The order below is dependency-aware. Phases are not completion claims; each requ
 - Device enrollment/revocation, conflict handling and recovery tests.
 - Cloudflare Worker/R2 only after explicit resource and cost review.
 
-## Phase 7 — Release readiness
+## Phase 7 — Release readiness and official distribution
 - Android and Windows compatibility matrix.
 - Security and dependency audit.
 - Performance, accessibility and usability testing.
 - Signed release builds, privacy policy and support documentation.
+- Android distribution via official RSS website / Google Play Store.
+- Windows distribution via official RSS website / Microsoft Store.
+- Verify Free feature availability, Premium activation and update eligibility.
+- No public GitHub binary releases.
 - Pilot release before commercial rollout.
 
 ## Delivery gates
