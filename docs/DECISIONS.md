@@ -42,7 +42,7 @@ Keep the single public repository `riyazamra1/RSS-Netrix`. Proprietary applicati
 
 ## ADR-011: Encrypted source is a parallel workstream, not a development blocker
 **Status:** Accepted
-Ordinary development proceeds independently of the encrypted-source workstream. A strict security gate applies at all times: no plaintext proprietary source in public GitHub commits, public artifacts, logs or releases, and no production decryption or source-bearing CI/CD until the encrypted-source security design is reviewed and approved by the owner. The gate is never bypassed for convenience.
+Ordinary development proceeds independently of the encrypted-source workstream. This does not authorize production decryption, source admission, or source-bearing CI/CD. Those activities remain blocked until the encrypted-source design has passed independent security review; production key custody is backed by an approved HSM/KMS design; and protected release authorization has been implemented and negatively tested. No plaintext proprietary source may enter public GitHub commits, public artifacts, caches, logs or releases. The gate is absolute and is never bypassed for convenience.
 
 ## ADR-012: Dependency selection
 **Status:** Accepted for evaluation; final lock gated on validation
@@ -62,4 +62,3 @@ Continue the $0/month infrastructure target. Do not create paid resources, accou
 ## ADR-015: Phased delivery, tests and factual reporting
 **Status:** Accepted (extends ADR-008)
 Continue development in independently reviewable phases, each with automated tests where practical and a factual progress report that states the commit SHA and exact build/test statuses. Do not merge any pull request or release a production build without explicit owner approval.
-
