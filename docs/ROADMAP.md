@@ -5,9 +5,14 @@ The order below is dependency-aware. Phases are not completion claims; each requ
 ## Phase 0 — Foundation and requirements
 - [x] Establish repository identity and Android package ID.
 - [x] Publish initial product, architecture and security direction.
-- [ ] Resolve remaining UX, credential recovery and release requirements.
-- [ ] Select SSH/SFTP and terminal dependencies after licensing/security review.
-- [ ] Approve encrypted-source build design before adding application source.
+- [x] Complete the initial repository and requirements audit (`AUDIT_REPORT.md`).
+- [x] Record owner decisions: proprietary licence, single public repo, encrypted source as a parallel workstream, dependency selection (`DECISIONS.md` ADR-009…015).
+- [x] Add licence, third-party notices and source-handling policy.
+- [x] Draft platform-neutral core contracts, vault threat model, design system and recovery model (`specs/`).
+- [ ] Owner review and approval of the foundation specifications.
+- [ ] Resolve remaining release requirements and packaging approach.
+- [ ] Validate the selected SSH/SFTP/terminal dependencies (dependency, licensing, API compatibility, security, build) before locking versions.
+- [ ] Implement and approve the encrypted-source design before adding application source to the public repository.
 
 ## Phase 1 — Platform skeletons
 - Android native app shell and navigation.
