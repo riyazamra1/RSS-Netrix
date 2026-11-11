@@ -34,7 +34,7 @@ jobs:
           while IFS= read -r file; do
             dir=$(dirname "$file")
             while IFS= read -r link; do
-              target="\${link%%#*}"
+              target=$(printf '%s' "$link" | cut -d'#' -f1)
               case "$target" in
                 ""|http://*|https://*|mailto:*) continue ;;
               esac
