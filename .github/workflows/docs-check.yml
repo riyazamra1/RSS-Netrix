@@ -34,7 +34,7 @@ jobs:
           while IFS= read -r file; do
             dir=$(dirname "$file")
             while IFS= read -r link; do
-              target="${link%%#*}"
+              target="\${link%%#*}"
               case "$target" in
                 ""|http://*|https://*|mailto:*) continue ;;
               esac
@@ -42,7 +42,7 @@ jobs:
                 echo "BROKEN LINK: $file -> $link"
                 status=1
               fi
-            done < <(grep -oE '\\]\\([^)]+\\)' "$file" | sed -E 's/^\\]\\(//; s/\\)$//')
+            done < <(grep -oE '\]\([^)]+\)' "$file" | sed -E 's/^\]\(//; s/\)$//')
           done < <(git ls-files '*.md')
           exit "$status"
 
