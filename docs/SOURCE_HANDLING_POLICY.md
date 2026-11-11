@@ -19,9 +19,11 @@ ordinary development continues unimpeded.
 2. **No plaintext proprietary source in public CI/CD artifacts, caches, logs,
    job summaries, test reports or screenshots.**
 3. **No plaintext proprietary source published as a release asset.**
-4. **No decryption of production source bundles and no source-bearing CI/CD
-   until the security design in `ENCRYPTED_SOURCE_REVIEW.md` is reviewed and
-   explicitly approved by the owner.**
+4. **No production decryption, source admission, or source-bearing CI/CD until
+   all production gates have passed:** independent security review; approved
+   HSM/KMS-backed production key custody; and protected release authorization
+   with negative tests proving unauthorized releases cannot decrypt or admit
+   source.
 5. No keys, secrets, signing credentials or recovery material in the
    repository, workflows, logs or artifacts.
 6. The Android application ID remains `com.riyaz.rssnetrix`. The Windows
@@ -32,8 +34,9 @@ ordinary development continues unimpeded.
 - Product documentation, specifications, architecture and decision records.
 - Non-sensitive build metadata and dependency manifests that contain no
   proprietary source and no secrets.
-- Encrypted proprietary source bundles (ciphertext only), once the encrypted
-  source format is implemented and approved.
+- Encrypted proprietary source bundles (ciphertext only), only after all
+  production gates in rule 2.4 have passed and the owner has explicitly
+  authorized source admission.
 - Secret-free tests that exercise public, non-proprietary tooling.
 
 ## 4. What is prohibited in the public repository
@@ -47,11 +50,12 @@ ordinary development continues unimpeded.
 
 - Proprietary application source is developed in an isolated, access-controlled
   workspace, never in a public branch.
-- Application source is admitted to the public repository only as an approved
-  encrypted bundle, and only after the encrypted-source gates pass.
+- Application source admission is prohibited until every production gate in
+  rule 2.4 has passed and the owner has explicitly approved the specific
+  admission.
 - The encrypted-source workstream is a **parallel workstream**, not a blocker
-  for ordinary development. However, the security gate in rule 2.4 is absolute:
-  it is never bypassed for convenience.
+  for ordinary development. The production security gate is absolute and is
+  never bypassed for convenience.
 
 ## 6. Enforcement
 
